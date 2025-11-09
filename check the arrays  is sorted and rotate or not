@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class solution {
+  private:
+   int findindex(vector<int> arr) {
+       int index = -1;
+       for (int i = 1; i < arr.size(); i++) {
+           if (arr[i - 1] > arr[i]) {
+               index = i;
+               break;
+           }
+       }
+       return index;
+   }
+
+   void rotate(vector<int>& arr, int m, int n) {
+        while (m < n) {
+            int tem = arr[m];
+            arr[m] = arr[n];
+            arr[n] = tem;
+            m++, n--;
+        }
+    }
+
+  public:
+   bool check(vector<int> arr) {
+       int n = arr.size();
+       int index = findindex(arr);
+       if(index==-1)return false;
+       rotate(arr, 0, index - 1);
+       rotate(arr, index, n - 1);
+       rotate(arr, 0, n - 1);
+       for(int i=0;i<arr.size();i++){
+           if(i!=0 && arr[i-1]>arr[i])return false;
+       }
+       return true;
+   }
+};
+
+int main() {
+    vector<int> arr = {3, 4, 5, 1, 2};
+    solution s;
+    cout<<s.check(arr);
+}
