@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+  public:
+   void simplesearch(vector<int>&arr,int elem){
+        for(int i=0;i<arr.size();i++){
+            if(arr[i]==elem){
+                cout<<"present in the index "<<i;
+                break;
+            }
+        }
+   }
+   void binarysearch(vector<int>&arr, int elem){
+       sort(arr.begin(),arr.end());
+       int low=0,high=arr.size()-1,mid=0;
+       while(low<=high){
+           mid=low+(high-low)/2;
+           if(arr[mid]==elem){
+               cout<<"present in the index "<<mid;
+               break;
+           }else if(arr[mid]<elem)low=mid+1;
+           else high=mid-1;
+       }
+   }
+};
+int main() {
+vector<int>arr={1,2,3,4,5,6,7};
+solution s;
+s.simplesearch(arr,6);
+cout<<endl;
+s.binarysearch(arr,6);
+
+}
