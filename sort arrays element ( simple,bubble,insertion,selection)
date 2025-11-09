@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+    private:
+    void simplesort(vector<int>arr){
+         for(int i=0;i<arr.size();i++){
+             for(int j=i+1;j<arr.size();j++){
+                 if(arr[i]>arr[j]){
+                     swap(arr[i],arr[j]);
+                 }
+             }
+         }
+         for(int val:arr)cout<<val<<" ";
+    }
+    void bubblesort(vector<int>arr){
+        int n=arr.size();
+        for(int i=0;i<n-1;i++){
+            bool flag=false;
+            for(int j=0;j<n-i-1;j++){
+                if(arr[j]>arr[j+1]){
+                    swap(arr[j],arr[j+1]);
+                    flag=true;
+            }
+            }if(!flag)break;
+        }
+        for(int val:arr)cout<<val<<" ";
+    }
+    void selectionsort(vector<int>arr){
+        for(int i=0;i<arr.size();i++){
+            int elem=arr[i];
+            int loc=i;
+            for(int j=i+1;j<arr.size();j++){
+                if(elem>arr[j]){
+                    elem=arr[j];
+                    loc=j;
+                }
+            }if(arr[i]>arr[loc]){
+                swap(arr[i],arr[loc]);
+            }
+        }
+        for(int val:arr)cout<<val<<" ";
+    }
+    void insertionsort(vector<int>arr){
+        int n=arr.size()-1;
+        for(int i=1;i<=n;i++){
+            for(int j=i;j>0;j--){
+                if(j!=0 && arr[j-1]>arr[j]){
+                    swap(arr[j-1],arr[j]);
+                }
+            }
+        }
+        for(int val:arr)cout<<val<<" ";
+    }
+    public:
+    void f(vector<int>arr){
+        simplesort(arr);
+        cout<<endl;
+        bubblesort(arr);
+        cout<<endl;
+        selectionsort(arr);
+        cout<<endl;
+        insertionsort(arr);
+    }
+};
+int main() {
+vector<int>arr={6,5,4,8,3,2,9,1};
+solution s;
+s.f(arr);
+}
