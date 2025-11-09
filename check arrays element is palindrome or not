@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+    public:
+    bool check(vector<int>&arr){
+        int n=arr.size();
+        for(int i=0;i<n/2;i++){
+            if(arr[i]!=arr[n-i-1]){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+int main() {
+vector<int>arr={1,1,2,2,1,1};
+solution s;
+cout<<s.check(arr);
+
+}
