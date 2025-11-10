@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+  public:
+   void con(vector<int>&arr, int low,int mid, int high){
+       vector<int>tem;
+       int index1=low,index2=mid+1;
+       while(index1<=mid && index2<=high){
+           if(arr[index1]<=arr[index2])tem.push_back(arr[index1++]);
+           else tem.push_back(arr[index2++]);
+       }
+       while(index1<=mid)tem.push_back(arr[index1++]);
+       while(index2<=high)tem.push_back(arr[index2++]);
+       for(int i=low,j=0;j<tem.size();i++,j++){
+           arr[i]=tem[j];
+       }
+   }
+   void merge(vector<int>&arr, int low, int high){
+       if(low==high)return;
+           int mid=low+(high-low)/2;
+           merge(arr,low,mid);
+           merge(arr,mid+1,high);
+           con(arr,low,mid,high);
+       
+   }
+  void print(vector<int>arr){
+      for(int val:arr)cout<<val<<" ";
+  }
+};
+int main() {
+vector<int>arr={6,5,4,3,2,1};
+int n=arr.size();
+solution s;
+s.merge(arr,0,n-1);
+s.print(arr);
+}
