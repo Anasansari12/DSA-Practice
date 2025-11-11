@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+    public:
+  void front(vector<int>&arr, int &size, int elem){
+      arr.push_back(0);
+      for(int i=size;i>=0;i--){
+          arr[i+1]=arr[i];
+      }arr[0]=elem;
+      size++;
+  }
+  void mid(vector<int>&arr,int &size, int elem){
+      int index=2;
+      arr.push_back(0);
+      for(int i=size;i>=index;i--){
+          arr[i+1]=arr[i];
+      }
+      arr[index]=elem;
+      size++;
+  }
+  void end(vector<int>&arr, int &size, int elem){
+     arr.push_back(elem);
+  }
+  void print(vector<int>&arr){
+     for(int i=0;i<arr.size();i++){
+         cout<<arr[i]<<" ";
+     }
+  }
+  void f(vector<int>arr){
+      int size=arr.size()-1;
+      front(arr,size,100);
+      mid(arr,size,100);
+      end(arr,size,100);
+      print(arr);
+  } 
+};
+int main() {
+vector<int>arr={1,2,3,4,5};
+solution s;
+s.f(arr);
+}
