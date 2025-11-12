@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+    public:
+ void f1(vector<int>arr1,vector<int>arr2){
+     int n1=arr1.size(),n2=arr2.size();
+     unordered_set<int>ans;
+     int i=0,j=0;
+     while(i<n1 && j<n2){
+         if(arr1[i]<arr2[j]){
+             i++;
+         }else if(arr1[i]>arr2[j]){
+             j++;
+         }else{
+             ans.insert(arr1[i]);
+             i++,j++;
+         }
+     }
+     for(int val:ans)cout<<val;
+ }
+ void f2(vector<int>arr1,vector<int>arr2){
+     int n1=arr1.size(),n2=arr2.size();
+     int i=0,j=0,pre1=-1,pre2=-1;
+     while(i<n1 && j<n2){
+         while(i+1<n1 && arr1[i]==arr1[i+1])i++;
+         while(j+1<n2 && arr2[j]==arr2[j+1])j++;
+         if(arr1[i]==arr2[j] && pre1!=arr1[i] && pre2!=arr2[j]){
+             pre1=arr1[i];
+             pre2=arr2[j];
+             cout<<arr1[i];
+             i++,j++;
+         }else if(arr1[i]>arr2[j]){
+             pre2=arr2[j];
+             j++;
+         }else{
+             pre1=arr1[i];
+             i++;
+         }
+         
+     }
+ }
+      
+};
+int main(){
+vector<int>arr1 = {1, 2, 2, 3, 4, 4, 5};  
+vector<int>arr2 = {2, 2, 4, 4, 4, 6};
+solution s;
+s.f2(arr1,arr2);
+
+
+}
