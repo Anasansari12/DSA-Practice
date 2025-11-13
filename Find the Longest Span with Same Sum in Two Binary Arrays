@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+    public:
+    void f1(vector<int>arr1,vector<int>arr2){
+        int mx=-1;
+        for(int i=0;i<arr1.size();i++){
+            int sum1=0,sum2=0;
+            int j=i,k=i;
+            while(j<arr1.size() && k<arr2.size()){
+                sum1+=arr1[j];
+                sum2+=arr2[k];
+            if(sum1==sum2){
+                mx=max(mx,j-i+1);
+            }
+            j++,k++;
+            }
+        }
+        cout<<mx;
+    }
+    void f2(vector<int>arr1,vector<int>arr2){
+        unordered_map<int,int>m;
+        int sum1=0,sum2=0,len=-1;
+        for(int i=0;i<arr1.size();i++){
+            sum1+=arr1[i];
+            sum2+=arr2[i];
+            int diff=sum1-sum2;
+            if(diff==0)len=i+1;
+            if(m.find(diff)!=m.end()){
+                len=max(len,i-m[diff]);
+            }else m[diff]=i;
+        }
+        cout<<len;
+    }
+     
+}; 
+int main() {
+vector<int>arr1={0, 1, 0, 1, 1, 1, 1};
+vector<int>arr2={1, 1, 1, 0, 1, 0, 1};
+solution s;
+s.f1(arr1,arr2);
+s.f2(arr1,arr2);
+
+
+
+}
