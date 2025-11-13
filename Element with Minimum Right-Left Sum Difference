@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+    public:
+    void f1(vector<int>arr){
+        int minimum=INT_MAX,ans=-1;
+        for(int i=1;i<arr.size()-2;i++){
+            int sum1=0,sum2=0;
+            for(int j=i-1;j>=0;j--){
+                sum1+=arr[j];
+            }
+            for(int k=i+1;k<arr.size();k++){
+                sum2+=arr[k];
+            }
+            if(sum1<sum2){
+                if(minimum>sum2)ans=arr[i];
+            }
+        }cout<<ans;
+    }
+    void f2(vector<int>arr){
+        int leftsum=0;
+        int rightsum=0;
+        int minimum=INT_MAX,ans=-1;
+        int totalsum=0;
+        for(int val:arr)totalsum+=val;
+        for(int i=0;i<arr.size();i++){
+            rightsum=totalsum-leftsum-arr[i];
+            if(leftsum<rightsum){
+                int diff=rightsum-leftsum;
+                if(diff<minimum){
+                    ans=arr[i];
+                }
+            }
+            leftsum+=arr[i];
+        }cout<<ans;
+    }
+}; 
+int main() {
+vector<int>arr={2, 3, 5, 1, 4};
+solution s;
+s.f1(arr);
+s.f2(arr);
+
+}
