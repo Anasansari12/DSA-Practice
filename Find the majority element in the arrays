@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+    public:
+    void f1(vector<int>arr){
+        int fre=0,mx=-1,ans=0;
+        for(int i=0;i<arr.size();i++){
+            fre=1;
+            for(int j=i+1;j<arr.size();j++){
+                if(arr[i]==arr[j])fre++;
+            }if(fre>mx){
+                mx=fre;
+                ans=arr[i];
+            }
+        }
+        cout<<ans;
+    }
+    
+    void f2(vector<int>arr){
+        int fre=1,curr=arr[0];
+        for(int i=1;i<arr.size();i++){
+            if(curr==arr[i])fre++;
+            else if(fre==0){
+                curr=arr[i];
+                fre=1;
+            }else fre--;
+        }cout<<curr;
+    }
+    
+    void f3(vector<int>arr){
+        unordered_map<int,int>m;
+        int mx=INT_MIN,ans=-1;
+        for(int i=0;i<arr.size();i++)m[arr[i]]++;
+        for(int i=0;i<m.size();i++){
+            if(m[arr[i]]>mx){
+                mx=m[arr[i]];
+                ans=arr[i];
+            }
+        }
+        cout<<ans;
+    }
+}; 
+int main() {
+vector<int>arr={3, 3, 4, 2, 4, 4, 2, 4, 4};
+solution s;
+s.f1(arr);
+s.f2(arr);
+s.f3(arr);
+
+}
