@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+class solution{
+    public:
+    void f(vector<int>arr){
+        int index=-1;
+        int minimum=INT_MAX;
+        for(int i=0;i<arr.size();i++){
+            if(arr[i]==1){
+                if(index!=-1){
+                    minimum=min(minimum,i-index);
+                }
+            }index=i;
+        }
+        cout<<minimum;
+    }
+}; 
+int main() {
+vector<int>arr={0,0,0,0, 1, 0, 1, 1, 1, 1};
+solution s;
+s.f(arr);
+
+
+
+}
