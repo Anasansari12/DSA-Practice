@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+class soltuion{
+  public:  
+  void BUT(vector<int>arr){
+      int n=arr.size();
+      for(int i=0;i<n;i++){
+          for(int j=i+1;j<n;j++){
+              for(int k=j+1;k<n;k++){
+                  int x=arr[i]*arr[i];
+                  int y=arr[j]*arr[j];
+                  int z=arr[k]*arr[k];
+                  if(x+y==z || z+x==y || y+z==x){
+                      cout<<arr[i]<<"+"<<arr[j]<<"="<<arr[k];
+                  }
+              }
+          }
+      }
+  }
+   void better(vector<int>arr){
+       int n=arr.size();
+       for(int i=0;i<arr.size();i++){
+           arr[i]=arr[i]*arr[i];
+       }
+       for(int i=n-1;i>=0;i--){
+           int l=0,r=i-1;
+           while(l<r){
+               if(arr[l]+arr[r]==arr[i]){
+                   cout<<arr[l]<<"+"<<arr[r]<<"="<<arr[i];
+                   l++;r--;
+               }else if(arr[l]+arr[r]<arr[i])l++;
+               else r--;
+           }
+       }
+   }
+};
+int main() {
+vector<int> arr = {3, 1, 4, 6, 5};
+soltuion s;
+s.BUT(arr);
+cout<<"    ";
+s.better(arr);
+}
