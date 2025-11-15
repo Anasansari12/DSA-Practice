@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+class soltuion{
+  public:  
+  void f(vector<int>arr){
+      int mx=arr[arr.size()];
+      for(int i=arr.size()-2;i>=0;i--){
+          if(arr[i]>mx)mx=arr[i];
+          else arr[i]=mx;
+      }
+      for(int val:arr)cout<<val<<" ";
+  }
+};
+int main() {
+vector<int>arr={16,17,3,4,5,2};
+soltuion s;
+s.f(arr);
+
+}
