@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+using namespace std;
+class soltuion{
+public:
+void BUTflor(vector<int>arr, int x){
+    int fl=INT_MIN,found=false;
+    for(int val:arr){
+        if(val<=x && val>fl){
+            fl=val;
+            found=true;
+        }
+    }
+    if(found)cout<<fl;
+    else cout<<-1;
+}
+void BUtcel(vector<int>arr, int x){
+    int cel=INT_MAX,found=false;
+    for(int val:arr){
+        if(val>=x && val<cel){
+            cel=val;
+            found=true;
+        }
+    }
+    if(found)cout<<cel;
+    else cout<<-1;
+}
+void betterflor(vector<int>arr,int x){
+    sort(arr.begin(),arr.end());
+    int ans=-1;
+    int low=0,high=arr.size()-1,mid=0;
+    while(low<=high){
+        mid=low+(high-low)/2;
+        if(arr[mid]==x){
+            ans=arr[mid];
+            break;
+        }else if(arr[mid]<x){
+            low=mid+1;
+            ans=arr[mid];
+        }
+        else high=mid-1;
+    }
+    cout<<ans;
+} 
+void bettercel(vector<int>arr,int x){
+    sort(arr.begin(),arr.end());
+    int ans=-1;
+    int low=0,high=arr.size()-1,mid=0;
+    while(low<=high){
+        mid=low+(high-low)/2;
+        if(arr[mid]==x){
+            ans=arr[mid];
+            break;
+        }else if(arr[mid]>x){
+            high=mid-1;
+            ans=arr[mid];
+        }
+        else low=mid+1;
+    }
+    cout<<ans;
+} 
+void f(vector<int>arr, int x){
+     BUTflor(arr,7);
+     BUtcel(arr,7);
+     betterflor(arr,7);
+     bettercel(arr,7);
+}
+};
+int main() {
+vector<int> arr = {2, 8, 4, 10, 6};
+soltuion s;
+s.f(arr,7);
+}
