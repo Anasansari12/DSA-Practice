@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+class soltuion{
+  public:  
+  int BUt(vector<int>arr){
+      for(int i=0;i<arr.size();i++){
+          if(arr[i]==i)return i;
+      }
+      return -1;
+  }
+  int better(vector<int>arr){
+      int low=0,high=arr.size()-1,mid=0;
+      while(low<=high){
+          mid=low+(high-low)/2;
+          if(arr[mid]==mid){
+              return mid;
+          }else if(mid>arr[mid])low=mid+1;
+          else high=mid-1;
+      }
+      return -1;
+  }
+};
+int main() {
+vector<int>arr={-1, 0, 2, 5};
+soltuion s;
+cout<<s.BUt(arr);
+cout<<s.better(arr);
+}
