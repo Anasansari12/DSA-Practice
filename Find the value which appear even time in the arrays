@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+class soltuion{
+  public:  
+  void BUt(vector<int>arr){
+      for(int i=0;i<arr.size();i++){
+          int count=0;
+          for(int j=0;j<arr.size();j++){
+              if(arr[i]==arr[j])count++;
+          }if(count%2==0)cout<<arr[i]<<" ";
+      }
+     
+  }
+  void BUtbetter(vector<int>arr){
+      for(int i=0;i<arr.size();i++){
+          bool seen=false;
+          for(int k=0;k<i;k++){
+              if(arr[k]==arr[i]){
+                  seen=true;
+                  break;
+              }
+          }
+          if(seen)continue;
+          int count=0;
+          for(int j=0;j<arr.size();j++){
+              if(arr[i]==arr[j]){
+                  count++;
+              }
+          }
+          if(count%2==0)cout<<arr[i]<<" ";
+      }
+  }
+  void usinghash(vector<int>arr){
+      unordered_map<int,int>m;
+      vector<int>ans;
+      for(int i=0;i<arr.size();i++)m[arr[i]]++;
+      for(int i=0;i<arr.size();i++){
+          if(m[arr[i]]%2==0){
+              ans.push_back(arr[i]);
+              m[arr[i]]=0;
+          }
+      }for(int val:ans)cout<<val;
+  }
+  
+  void f(vector<int>arr){
+      usinghash(arr);
+      cout<<endl;
+      BUt(arr);
+      cout<<endl;
+      BUtbetter(arr);
+      cout<<endl;
+  }
+};
+int main() {
+vector<int>arr={1, 1, 2, 2};
+soltuion s;
+s.f(arr);
+
+}
